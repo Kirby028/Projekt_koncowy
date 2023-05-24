@@ -1,7 +1,5 @@
 import sys
 import json
-import yaml
-import xml.etree.ElementTree as ET
 
 
 def parse_arguments():
