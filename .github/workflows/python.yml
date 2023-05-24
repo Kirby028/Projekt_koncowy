@@ -1,0 +1,33 @@
+name: py to exe
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: powershell
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: .\installResources.sh
+    
+    - name: Build executable
+      run: pyinstaller.exe --onefile projekt.py
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MyExecutable
+        path: dist/projekt.exe
