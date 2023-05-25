@@ -39,5 +39,5 @@ jobs:
       - name: Archive compiled app
         uses: actions/upload-artifact@v3
         with:
-          name: compiled-app
+          name: application
           path: dist/projekt.exe
